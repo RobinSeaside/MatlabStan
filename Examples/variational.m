@@ -24,11 +24,13 @@ schools_dat = struct('J',8,...
                      'y',[28 8 -3 7 -1 1 18 12],...
                      'sigma',[15 10 16 11 9 11 10 18]);
 
-%fit = stan('model_code',schools_code,'data',schools_dat,'verbose',true);
-%fit = stan('model_code',schools_code,'data',schools_dat,'verbose',true,'method','variational');
-fit = stan('model_name','anon_model','data',schools_dat,'verbose',true,'method','variational','iter',2000);
-fit = stan('model_name','anon_model','data',schools_dat,'verbose',true,'method','sample');
-fit = stan('model_name','anon_model','data',schools_dat,'verbose',true,'method','optimize');
+model = StanModel('verbose',true,'model_code',schools_code,'data',schools_dat);
+model.compile();
+
+% http://www.slideshare.net/yutakashino/automatic-variational-inference-in-stan-nips2015yomi20160120
+% compare to slide 32
+fit = model.sampling('iter',1000,'warmup',500,'chains',4,'seed',123);
+fit_vb = model.vb();
 
 print(fit);
 
