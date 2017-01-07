@@ -54,8 +54,8 @@
 %              of the provided seed to avoid dependency.
 %     algorithm - string, optional
 %              If method = 'sample', {'NUTS','HMC'}, default = 'NUTS'
-%              If method = 'optimize', {'LBFGS', 'BFGS', 'NEWTON'}
-%                          default = 'LBFGS'
+%              If method = 'optimize', {'LBFGS', 'BFGS', 'NEWTON'}, default = 'LBFGS'
+%              If method = 'variational', {'MEANFIELD','FULLRANK'}, default = 'MEANFIELD'
 %     sample_file - string, optional
 %              Name of file(s) where samples for all parameters are saved.
 %              Default = 'output.csv'.
