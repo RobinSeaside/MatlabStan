@@ -189,6 +189,7 @@ classdef StanModel < handle
                'processManager (https://github.com/brian-lau/MatlabProcessManager) is required');
          end
 
+         % TODO: move this into stan_version
          count = 0;
          while 1 % FIXME, occasionally stanc does not return version?
             try
@@ -309,6 +310,7 @@ classdef StanModel < handle
                   && exist(fullfile(fa.Name,'bin'),'dir')
                self.stan_home = fa.Name;
             else
+               % TODO make this message more informative
                error('StanModel:stan_home:InputFormat',...
                   'Does not look like a proper stan setup');
             end
