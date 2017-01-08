@@ -29,7 +29,7 @@ model.compile();
 
 % http://www.slideshare.net/yutakashino/automatic-variational-inference-in-stan-nips2015yomi20160120
 % compare to slide 32
-fit = model.sampling('iter',1000,'warmup',500,'chains',4,'seed',123);
+fit = model.sampling('iter',1000,'warmup',500,'chains',4,'seed',123,'inc_warmup',true);
 fit_vb = model.vb();
 
 print(fit);
